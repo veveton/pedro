@@ -7,7 +7,7 @@ import br.edu.ufape.poo.barbeariaufape.exception.ProdutoDuplicadoException;
 import br.edu.ufape.poo.barbeariaufape.exception.ProdutoNaoExisteException;
 
 
-public interface ICadastroProduto {
+public interface ICadastroProdutoService {
 
 	Produto procurarProdutoNome(String nome) throws ProdutoNaoExisteException;
 

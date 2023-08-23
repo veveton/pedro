@@ -8,53 +8,52 @@ import org.springframework.stereotype.Service;
 import br.edu.ufape.poo.barbeariaufape.entidade.basica.Produto;
 import br.edu.ufape.poo.barbeariaufape.exception.ProdutoDuplicadoException;
 import br.edu.ufape.poo.barbeariaufape.exception.ProdutoNaoExisteException;
-import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.ICadastroProduto;
+import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.ICadastroProdutoService;
 import br.edu.ufape.poo.barbeariaufape.repositorio.ColecaoProdutoRepository;
 
 @Service
-public class CadastroProdutoImpl implements ICadastroProduto {
+public class CadastroProdutoServiceImpl implements ICadastroProdutoService {
 	@Autowired
 	private ColecaoProdutoRepository colecaoProduto;
 
-	
-	public Produto procurarProdutoNome(String nome)
-			throws ProdutoNaoExisteException {
+	@Override
+	public Produto procurarProdutoNome(String nome) throws ProdutoNaoExisteException {
 		Produto p = colecaoProduto.findByNome(nome);
-		if(p == null) {
+		if (p == null) {
 			throw new ProdutoNaoExisteException(nome);
 		}
 		return p;
 	}
-	
-	public Produto salvarProduto(Produto entity)
-				throws ProdutoDuplicadoException {
+
+	@Override
+	public Produto salvarProduto(Produto entity) throws ProdutoDuplicadoException {
 		try {
 			procurarProdutoNome(entity.getNome());
 			throw new ProdutoDuplicadoException(entity.getNome());
-		} catch(ProdutoNaoExisteException err) {
+		} catch (ProdutoNaoExisteException err) {
 			return colecaoProduto.save(entity);
 		}
 	}
 
+	@Override
 	public List<Produto> listarProdutos() {
 		return colecaoProduto.findAll();
 	}
 
+	@Override
 	public boolean verificarExistenciaProdutoId(Long id) {
 		return colecaoProduto.existsById(id);
 	}
 
+	@Override
 	public Produto localizarProdutoId(Long id) {
 		return colecaoProduto.findById(id).orElse(null);
 	}
-	
-	public void removerProdutoNome(String nome) 
-			throws ProdutoNaoExisteException {
+
+	@Override
+	public void removerProdutoNome(String nome) throws ProdutoNaoExisteException {
 		Produto p = procurarProdutoNome(nome);
 		colecaoProduto.delete(p);
 	}
 
-   
-
-	
 }
