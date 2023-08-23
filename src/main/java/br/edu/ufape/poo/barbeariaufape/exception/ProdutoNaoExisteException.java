@@ -1,4 +1,4 @@
-package br.edu.ufape.poo.barbeariaufape.negocio.cadastro.exception;
+package br.edu.ufape.poo.barbeariaufape.exception;
 
 public class ProdutoNaoExisteException extends Exception{
 	private static final long serialVersionUID = 1L;

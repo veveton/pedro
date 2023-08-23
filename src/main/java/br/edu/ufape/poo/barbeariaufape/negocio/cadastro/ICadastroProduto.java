@@ -2,12 +2,12 @@ package br.edu.ufape.poo.barbeariaufape.negocio.cadastro;
 
 import java.util.List;
 
-import br.edu.ufape.poo.barbeariaufape.modelos.basica.Produto;
-import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.exception.ProdutoDuplicadoException;
-import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.exception.ProdutoNaoExisteException;
+import br.edu.ufape.poo.barbeariaufape.entidade.basica.Produto;
+import br.edu.ufape.poo.barbeariaufape.exception.ProdutoDuplicadoException;
+import br.edu.ufape.poo.barbeariaufape.exception.ProdutoNaoExisteException;
 
 
-public interface InterfaceCadastroProduto {
+public interface ICadastroProduto {
 
 	Produto procurarProdutoNome(String nome) throws ProdutoNaoExisteException;
 

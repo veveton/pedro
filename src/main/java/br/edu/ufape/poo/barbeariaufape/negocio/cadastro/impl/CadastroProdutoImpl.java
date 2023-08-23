@@ -1,19 +1,20 @@
-package br.edu.ufape.poo.barbeariaufape.negocio.cadastro;
+package br.edu.ufape.poo.barbeariaufape.negocio.cadastro.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.ufape.poo.barbeariaufape.dados.InterfaceColecaoProduto;
-import br.edu.ufape.poo.barbeariaufape.modelos.basica.Produto;
-import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.exception.ProdutoDuplicadoException;
-import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.exception.ProdutoNaoExisteException;
+import br.edu.ufape.poo.barbeariaufape.entidade.basica.Produto;
+import br.edu.ufape.poo.barbeariaufape.exception.ProdutoDuplicadoException;
+import br.edu.ufape.poo.barbeariaufape.exception.ProdutoNaoExisteException;
+import br.edu.ufape.poo.barbeariaufape.negocio.cadastro.ICadastroProduto;
+import br.edu.ufape.poo.barbeariaufape.repositorio.ColecaoProdutoRepository;
 
 @Service
-public class CadastroProduto implements InterfaceCadastroProduto {
+public class CadastroProdutoImpl implements ICadastroProduto {
 	@Autowired
-	private InterfaceColecaoProduto colecaoProduto;
+	private ColecaoProdutoRepository colecaoProduto;
 
 	
 	public Produto procurarProdutoNome(String nome)

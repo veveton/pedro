@@ -1,4 +1,4 @@
-package br.edu.ufape.poo.barbeariaufape.modelos.basica;
+package br.edu.ufape.poo.barbeariaufape.entidade.basica;
 
 import java.sql.Date;
 
